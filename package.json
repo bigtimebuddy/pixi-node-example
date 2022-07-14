@@ -1,0 +1,16 @@
+{
+  "name": "pixi-node-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pixi/node": "^6.5.0-rc"
+  }
+}
