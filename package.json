@@ -11,6 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@pixi/node": "^6.5.0-rc"
+    "@pixi/node": "^6.5.0-rc.2"
   }
 }

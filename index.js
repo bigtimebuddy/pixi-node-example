@@ -1,5 +1,5 @@
 const { Application, Sprite, Assets } = require('@pixi/node');
-const { writeFileSync } = require('fs');
+const { promises: { writeFile } } = require('fs');
 const path = require('path');
 
 (async () => {
@@ -33,9 +33,13 @@ const path = require('path');
         .canvas(app.stage)
         .toDataURL('image/png');
     
-    const base64Data = base64Image.replace(/^data:image\/png;base64,/, '');
-    const output = `./test.png`;
-    
-    writeFileSync(output, base64Data, 'base64');
+    // write the base64 image to a file
+    await writeFile(
+        `./test.png`, 
+        base64Image.replace(/^data:image\/png;base64,/, ''), 
+        'base64'
+    );
+
+    process.exit();
 
 })();
