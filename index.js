@@ -1,44 +1,26 @@
 const { Application, Sprite, Assets } = require('@pixi/node');
-const { promises: { writeFile } } = require('fs');
+const fs = require('fs');
 const path = require('path');
 
 (async () => {
-    await Assets.init();
-    const app = new Application();
+
+    // Create a new app but disable Ticker
+    const app = new Application({ autoStart: false });
     
-    // load a sprite
+    // Load a sprite using new Assets API
     const bunnyTexture = await Assets.load(path.join(__dirname, 'assets/bunny.png'));
     const bunny = Sprite.from(bunnyTexture);
     
-    // Setup the position of the bunny
-    bunny.x = app.renderer.width / 2;
-    bunny.y = app.renderer.height / 2;
-    
-    // Rotate around the center
-    bunny.anchor.x = 0.5;
-    bunny.anchor.y = 0.5;
-    
-    // Add the bunny to the scene we are building.
+    // Add the Sprite and manually render it
     app.stage.addChild(bunny);
+    app.render();
+
+    // Extract and save the stage
+    const data = app.renderer.plugins.extract.base64()
+        .replace(/^data:image\/png;base64,/, '');
     
-    // Listen for frame updates
-    app.ticker.add(() => {
-            // each frame we spin the bunny around a bit
-        bunny.rotation += 0.01;
-    });
-    
-    // extract and save the stage
-    app.renderer.render(app.stage);
-    const base64Image = app.renderer.plugins.extract
-        .canvas(app.stage)
-        .toDataURL('image/png');
-    
-    // write the base64 image to a file
-    await writeFile(
-        `./test.png`, 
-        base64Image.replace(/^data:image\/png;base64,/, ''), 
-        'base64'
-    );
+    // Write the output to a file
+    await fs.promises.writeFile(`./test.png`, data, 'base64');
 
     process.exit();
 
