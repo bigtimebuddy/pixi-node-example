@@ -1,4 +1,5 @@
 const { Application, Sprite, Assets } = require('@pixi/node');
+const { writeFileSync } = require('fs');
 const path = require('path');
 
 (async () => {
@@ -27,9 +28,9 @@ const path = require('path');
     });
     
     // extract and save the stage
-    app.renderer.render(stage);
+    app.renderer.render(app.stage);
     const base64Image = app.renderer.plugins.extract
-        .canvas(stage)
+        .canvas(app.stage)
         .toDataURL('image/png');
     
     const base64Data = base64Image.replace(/^data:image\/png;base64,/, '');
