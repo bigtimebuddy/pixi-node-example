@@ -22,6 +22,4 @@ const path = require('path');
     // Write the output to a file
     await fs.promises.writeFile(`./test.png`, data, 'base64');
 
-    process.exit();
-
 })();
