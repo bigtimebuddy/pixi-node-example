@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.mjs"
   },
   "keywords": [],
   "author": "",
