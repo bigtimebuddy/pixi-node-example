@@ -4,6 +4,7 @@
   "private": true,
   "description": "",
   "scripts": {
+    "postinstall": "node fix.mjs",
     "test": "node index.mjs"
   },
   "keywords": [],

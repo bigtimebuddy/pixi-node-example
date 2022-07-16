@@ -6,7 +6,7 @@ import path from 'path';
 const app = new Application({ autoStart: false });
 
 // Load a sprite using new Assets API
-const bunnyTexture = await Assets.load(path.join(__dirname, 'assets/bunny.png'));
+const bunnyTexture = await Assets.load(path.join(process.cwd(), 'assets/bunny.png'));
 const bunny = Sprite.from(bunnyTexture);
 
 // Add the Sprite and manually render it
