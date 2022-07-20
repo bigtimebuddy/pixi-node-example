@@ -4,13 +4,12 @@
   "private": true,
   "description": "",
   "scripts": {
-    "postinstall": "node fix.mjs",
     "test": "node index.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@pixi/node": "^6.5.0-rc.2"
+    "@pixi/node": "^6.5.0-rc.4"
   }
 }
