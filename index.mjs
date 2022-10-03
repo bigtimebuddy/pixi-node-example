@@ -14,8 +14,10 @@ app.stage.addChild(bunny);
 app.render();
 
 // Extract and save the stage
-const data = app.renderer.plugins.extract.base64()
-    .replace(/^data:image\/png;base64,/, '');
+const data = app.renderer.plugins.extract.base64();
+const base64 = data.replace(/^data:image\/png;base64,/, '');
+
+console.log(data);
 
 // Write the output to a file
-await fs.promises.writeFile(`./test.png`, data, 'base64');
+await fs.promises.writeFile(`./test.png`, base64, 'base64');
