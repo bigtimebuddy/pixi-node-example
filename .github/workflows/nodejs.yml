@@ -22,4 +22,6 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Built and Test
-      run: npm test
+      uses: GabrielBB/xvfb-action@v1.0
+      with:
+        run: npm test
