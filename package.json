@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@pixi/node": "^6.5.5"
+    "@pixi/node": "^7.0.0"
   }
 }

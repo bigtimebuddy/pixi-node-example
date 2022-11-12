@@ -14,7 +14,7 @@ app.stage.addChild(bunny);
 app.render();
 
 // Extract and save the stage
-const data = app.renderer.plugins.extract.base64();
+const data = await app.renderer.extract.base64();
 const base64 = data.replace(/^data:image\/png;base64,/, '');
 
 console.log(data);
