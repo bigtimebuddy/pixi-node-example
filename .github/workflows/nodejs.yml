@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install Canvas Dependencies
-      run: sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+      run: sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev xvfb
     - name: Use Node.js 16.x
       uses: actions/setup-node@v3
       with:
@@ -22,6 +22,4 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Built and Test
-      uses: GabrielBB/xvfb-action@v1.0
-      with:
-        run: npm test
+      run: xvfb-run --auto-servernum npm test
